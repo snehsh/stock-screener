@@ -5,7 +5,7 @@ from indicator import StockAnalyzer
 def nifty50_sort_3SMA():
 
     results_50 = []
-    csv_file_path = "../nifty_data/ticker50.csv"
+    csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker50.csv"
     df = pd.read_csv(csv_file_path)
 
     for row in df['Ticker']:
@@ -18,7 +18,7 @@ def nifty50_sort_3SMA():
 
 def nifty200_sort_3SMA():
     results_200 = []
-    csv_file_path = "../nifty_data/ticker200.csv"
+    csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker200.csv"
     df = pd.read_csv(csv_file_path)
 
     for row in df['Ticker']:
@@ -31,7 +31,7 @@ def nifty200_sort_3SMA():
 
 def nifty500_sort_3SMA():
     results_500 = []
-    csv_file_path = "../nifty_data/ticker500.csv"
+    csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker500.csv"
     df = pd.read_csv(csv_file_path)
 
     for row in df['Ticker']:
