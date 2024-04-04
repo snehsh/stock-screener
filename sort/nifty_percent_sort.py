@@ -4,7 +4,7 @@ from indicator import StockAnalyzer
 
 def nifty50_sort_percent():
     results_50 = []
-    csv_file_path = "../nifty_data/ticker50.csv"
+    csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker200.csv"
     df = pd.read_csv(csv_file_path)
     for row in df['Ticker']:
         analyze = StockAnalyzer(row + ".NS")
@@ -16,7 +16,7 @@ def nifty50_sort_percent():
 
 def nifty200_sort_percent():
     results_200 = []
-    csv_file_path = "../nifty_data/ticker200.csv"
+    csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker200.csv"
     df = pd.read_csv(csv_file_path)
 
     for row in df['Ticker']:
@@ -29,7 +29,7 @@ def nifty200_sort_percent():
 
 def nifty500_sort_percent():
     results_500 = []
-    csv_file_path = "../nifty_data/ticker500.csv"
+    csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker500.csv"
     df = pd.read_csv(csv_file_path)
 
     for row in df['Ticker']:
