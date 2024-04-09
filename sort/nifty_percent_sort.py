@@ -1,6 +1,8 @@
 import pandas as pd
 from indicator import StockAnalyzer
 from functools import lru_cache
+
+
 @lru_cache(maxsize=None)
 def nifty50_sort_percent():
     results_50 = []

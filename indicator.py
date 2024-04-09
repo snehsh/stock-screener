@@ -4,7 +4,7 @@ from io import BytesIO
 
 
 class StockAnalyzer:
-    def __init__(self, ticker,*percent):
+    def __init__(self, ticker, *percent):
         self.signal = None
         self.ticker = ticker
         self.percent = percent

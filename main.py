@@ -7,7 +7,7 @@ def main():
     with tab1:
         st.header("Stock Screener")
         st.write("Welcome to Stock Screener")
-        st.image("/Users/snehshah/PycharmProjects/Python_Task/images/Intro.jpg",width=800)
+        st.image("/Users/snehshah/PycharmProjects/Python_Task/images/Intro.jpg", width=800)
 
     with tab2:
         st.header("Individual Stock Analysis")
@@ -28,21 +28,18 @@ def main():
             nifty_category_options_3SMA = ["Nifty 50 Analysis", "Nifty 200 Analysis", "Nifty 500 Analysis"]
             selected_nifty_option_3SMA = st.selectbox("Choose a Category", nifty_category_options_3SMA)
             if st.button("Analyze Stocks"):
-                if  selected_nifty_option_3SMA == "Nifty 50 Analysis":
+                if selected_nifty_option_3SMA == "Nifty 50 Analysis":
                     nifty_3SMA_display.download_pdf_50_3SMA()
-                elif  selected_nifty_option_3SMA == "Nifty 200 Analysis":
+                elif selected_nifty_option_3SMA == "Nifty 200 Analysis":
                     nifty_3SMA_display.download_pdf_200_3SMA()
-                elif  selected_nifty_option_3SMA == "Nifty 500 Analysis":
+                elif selected_nifty_option_3SMA == "Nifty 500 Analysis":
                     nifty_3SMA_display.download_pdf_500_3SMA()
         elif selected_nifty_indicator_option == "30% down from all time high":
             nifty_category_options_percent = ["Nifty 50 Analysis"]
             selected_nifty_option_percent = st.selectbox("Choose a Category", nifty_category_options_percent)
             if st.button("Analyze Stocks"):
-                if selected_nifty_option_percent=="Nifty 50 Analysis":
+                if selected_nifty_option_percent == "Nifty 50 Analysis":
                     nifty_percent_display.download_pdf_50_percent()
-
-
-
 
 
 if __name__ == "__main__":
