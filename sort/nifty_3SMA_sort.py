@@ -1,7 +1,8 @@
 import pandas as pd
 from indicator import StockAnalyzer
+from functools import lru_cache
 
-
+@lru_cache(maxsize=None)
 def nifty50_sort_3SMA():
 
     results_50 = []
@@ -15,7 +16,7 @@ def nifty50_sort_3SMA():
 
     return results_50
 
-
+@lru_cache(maxsize=None)
 def nifty200_sort_3SMA():
     results_200 = []
     csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker200.csv"
@@ -28,7 +29,7 @@ def nifty200_sort_3SMA():
 
     return results_200
 
-
+@lru_cache(maxsize=None)
 def nifty500_sort_3SMA():
     results_500 = []
     csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker500.csv"
