@@ -33,7 +33,7 @@ def download_pdf_50_3SMA():
     col3.table(sorted_df['Hold'])
 
     pdf = SimpleDocTemplate("nifty_50_recommendation_3SMA.pdf", pagesize=letter)
-    table_data = []
+    table_data = [['Buy', 'Sell', 'Hold']]
     for i, row in sorted_df.iterrows():
         table_data.append(list(row))
 
@@ -92,8 +92,8 @@ def download_pdf_200_3SMA():
     col3.header("Hold")
     col3.table(sorted_df['Hold'])
 
-    pdf = SimpleDocTemplate("nifty_200_recommendation_3SMA", pagesize=letter)
-    table_data = []
+    pdf = SimpleDocTemplate("nifty_200_recommendation_3SMA.pdf", pagesize=letter)
+    table_data = [['Buy', 'Sell', 'Hold']]
     for i, row in sorted_df.iterrows():
         table_data.append(list(row))
 
@@ -153,7 +153,7 @@ def download_pdf_500_3SMA():
     col3.table(sorted_df['Hold'])
 
     pdf = SimpleDocTemplate("nifty_500_recommendation_3SMA.pdf", pagesize=letter)
-    table_data = []
+    table_data = [['Buy', 'Sell', 'Hold']]
     for i, row in sorted_df.iterrows():
         table_data.append(list(row))
 

@@ -3,7 +3,7 @@ from screens import nifty_3SMA_display, individual_stock_analysis_display, nifty
 
 
 def main():
-    tab1, tab2, tab3 = st.tabs(["Home", "Individual Stock Analysis", "Nifty Index Analysis"])
+    tab1, tab2, tab3 = st.tabs(["Home", "Individual Stock Analysis", "Index Analysis"])
     with tab1:
         st.header("Stock Screener")
         st.write("Welcome to Stock Screener")
@@ -20,7 +20,7 @@ def main():
             individual_stock_analysis_display.percent_strategy_display()
 
     with tab3:
-        st.header("Nifty Index Analysis")
+        st.header("Index Analysis")
         st.write("Analyze an entire lot of stocks belonging to a particular index based on various indicators")
         indicator_options_nifty = ["3-SMA Strategy", "30% down from all time high"]
         selected_nifty_indicator_option = st.selectbox("Choose an indicator", indicator_options_nifty)
