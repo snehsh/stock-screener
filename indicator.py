@@ -1,6 +1,7 @@
 import yfinance as yf
 import matplotlib.pyplot as plt
 from io import BytesIO
+import pandas as pd
 
 
 class StockAnalyzer:
@@ -15,6 +16,7 @@ class StockAnalyzer:
         self.sma200 = self.data['Close'].rolling(window=200).mean()[-260:]
         self.all_time_high = self.all_time_data['Close'].max()
         self.current_price = self.data['Close'].iloc[-1]
+
 
     def SMA_3(self):
         current_price = self.current_price
@@ -35,12 +37,16 @@ class StockAnalyzer:
     def plot_data_3SMA(self):
         plt.figure(figsize=(10, 6))
         current_price = self.current_price
+        rounded_price = round(current_price,2)
+        rounded_sma20 = round(self.sma20[-1],2)
+        rounded_sma50 = round(self.sma50[-1],2)
+        rounded_sma200 = round(self.sma200[-1],2)
         year_data = self.data[-260:]
 
-        plt.plot(year_data.index, year_data['Close'], label='Close Price')
-        plt.plot(year_data.index, self.sma20, label='20-Day SMA', color='red')
-        plt.plot(year_data.index, self.sma50, label='50-Day SMA', color='blue')
-        plt.plot(year_data.index, self.sma200, label='200-Day SMA', color='green')
+        plt.plot(year_data.index, year_data['Close'], label=f'Close Price: {rounded_price}')
+        plt.plot(year_data.index, self.sma20, label=f'20-Day SMA: {rounded_sma20}', color='red')
+        plt.plot(year_data.index, self.sma50, label=f'50-Day SMA: {rounded_sma50}', color='blue')
+        plt.plot(year_data.index, self.sma200, label=f'200-Day SMA: {rounded_sma200}', color='green')
 
         plt.xlabel('Date')
         plt.ylabel('Price')
@@ -67,16 +73,15 @@ class StockAnalyzer:
     def plot_data_percent(self):
         plt.figure(figsize=(10, 6))
         current_price = self.current_price
+        rounded_price = round(current_price, 2)
         year_data = self.data[-260:]
         all_time_high = self.all_time_high
-
-        plt.plot(year_data.index, year_data['Close'], label='Close Price')
+        plt.plot(year_data.index, year_data['Close'], label=f'Close Price {rounded_price}')
 
         plt.xlabel('Date')
         plt.ylabel('Price')
         plt.title(f"Stock Prices for {self.ticker} (Last 12 Months)")
 
-        plt.axhline(y=current_price, color='green', linestyle='--', label=f"Current Price: {current_price}")
         plt.axhline(y=all_time_high, color='red', linestyle='--', label=f"All Time High: {all_time_high}")
 
         plt.legend()
@@ -94,10 +99,20 @@ class StockAnalyzer:
     def percent_strategy(self):
         current_price = self.current_price
         all_time_high = self.all_time_high
+        percent_diff_from_all_time_high = ((all_time_high - current_price) / all_time_high) * 100
+        rounded_percent_diff = round(percent_diff_from_all_time_high,2)
 
-        if 30 <= ((all_time_high - current_price) / all_time_high) * 100:
+        if 30 <= percent_diff_from_all_time_high:
             signal = "Buy"
         else:
-            signal = "No Signal"
+            signal = "No Suggestion"
         self.signal = signal
-        return signal
+        return signal, rounded_percent_diff
+
+    def dividends(self):
+        stock = yf.Ticker(self.ticker)
+        dividends = stock.get_dividends()
+        latest_dividend_date = dividends.index[-1]
+        latest_dividend_amount = dividends.iloc[-1]
+        return latest_dividend_date, latest_dividend_amount
+

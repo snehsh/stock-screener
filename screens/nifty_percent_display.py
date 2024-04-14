@@ -13,19 +13,19 @@ def download_pdf_50_percent():
     b = pd.DataFrame(df[df.Signal == 'Buy']['Stock Name'])
     b.columns = ['Buy']
     n = pd.DataFrame(df[df.Signal == 'No Signal']['Stock Name'])
-    n.columns = ['No Signal']
+    n.columns = ['No Suggestion']
     b = b.reset_index()['Buy']
-    n = n.reset_index()['No Signal']
+    n = n.reset_index()['No Suggestion']
     sorted_df = pd.concat([b, n], axis=1).fillna('')
     col1, col2 = st.columns(2)
 
     col1.header("Buy")
     col1.table(sorted_df['Buy'])
-    col2.header("No Signal")
-    col2.table(sorted_df['No Signal'])
+    col2.header("No Suggestion")
+    col2.table(sorted_df['No Suggestion'])
 
     pdf = SimpleDocTemplate("nifty_50_recommendation_%strategy.pdf", pagesize=letter)
-    table_data = [['Buy', 'No Signal', ]]
+    table_data = [['Buy', 'No Suggestion', ]]
     for i, row in sorted_df.iterrows():
         table_data.append(list(row))
 
