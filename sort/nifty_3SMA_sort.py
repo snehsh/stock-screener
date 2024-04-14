@@ -1,9 +1,10 @@
 import pandas as pd
 from indicator import StockAnalyzer
-from functools import lru_cache
+import streamlit as st
+import datetime
 
 
-@lru_cache(maxsize=None)
+@st.cache_data(ttl=datetime.timedelta(hours=2), show_spinner=False)
 def nifty50_sort_3SMA():
     results_50 = []
     csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker50.csv"
@@ -17,7 +18,7 @@ def nifty50_sort_3SMA():
     return results_50
 
 
-@lru_cache(maxsize=None)
+@st.cache_data(ttl=datetime.timedelta(hours=2), show_spinner=False)
 def nifty200_sort_3SMA():
     results_200 = []
     csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker200.csv"
@@ -31,7 +32,7 @@ def nifty200_sort_3SMA():
     return results_200
 
 
-@lru_cache(maxsize=None)
+@st.cache_data(ttl=datetime.timedelta(hours=2), show_spinner=False)
 def nifty500_sort_3SMA():
     results_500 = []
     csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker500.csv"

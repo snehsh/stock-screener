@@ -1,9 +1,10 @@
 import pandas as pd
+import streamlit as st
 from indicator import StockAnalyzer
-from functools import lru_cache
+import datetime
 
 
-@lru_cache(maxsize=None)
+@st.cache_data(ttl=datetime.timedelta(hours=2), show_spinner=False)
 def nifty50_sort_percent():
     results_50 = []
     csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker50.csv"

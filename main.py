@@ -7,7 +7,7 @@ def main():
     with tab1:
         st.header("Stock Screener")
         st.write("Welcome to Stock Screener")
-        st.image("/Users/snehshah/PycharmProjects/Python_Task/images/Intro.jpg", width=800)
+        st.image("images/Intro.jpg", width=800)
 
     with tab2:
         st.header("Individual Stock Analysis")
