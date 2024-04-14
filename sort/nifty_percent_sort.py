@@ -7,7 +7,7 @@ import datetime
 @st.cache_data(ttl=datetime.timedelta(hours=2), show_spinner=False)
 def nifty50_sort_percent():
     results_50 = []
-    csv_file_path = "/Users/snehshah/PycharmProjects/Python_Task/nifty_data/ticker50.csv"
+    csv_file_path = "nifty_data/ticker50.csv"
     df = pd.read_csv(csv_file_path)
     for row in df['Ticker']:
         analyze = StockAnalyzer(row + ".NS")
