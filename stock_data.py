@@ -3,7 +3,6 @@ import yfinance as yf
 
 class StockData:
     def __init__(self, ticker):
-        self.signal = None
         self.ticker = ticker
 
     def dividends(self):

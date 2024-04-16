@@ -1,7 +1,7 @@
 import yfinance as yf
 
 
-class StockAnalyzer:
+class SMA3Strategy:
     def __init__(self, ticker):
         self.signal = None
         self.ticker = ticker

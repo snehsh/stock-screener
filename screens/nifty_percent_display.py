@@ -7,7 +7,7 @@ from indicators.percent_startegy import PercentStrategy
 
 
 def download_pdf_50_percent():
-    select_percentage = st.slider("Select percentage down from all time high")
+    select_percentage = st.slider("Enter your choice:",0,100,1)
     st.write(f"Selected percentage: {select_percentage}")
     if st.button("Analyze Stocks"):
         results_50 = []

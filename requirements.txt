@@ -1,3 +1,5 @@
-yfinance
-matplotlib
-reportlab
+yfinance~=0.2.37
+matplotlib~=3.8.3
+reportlab~=4.1.0
+pandas~=2.2.1
+streamlit~=1.32.2

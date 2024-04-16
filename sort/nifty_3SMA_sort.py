@@ -1,5 +1,5 @@
 import pandas as pd
-from indicators.SMA3_strategy import StockAnalyzer
+from indicators.SMA3_strategy import SMA3Strategy
 import streamlit as st
 import datetime
 
@@ -11,7 +11,7 @@ def nifty50_sort_3SMA():
     df = pd.read_csv(csv_file_path)
 
     for row in df['Ticker']:
-        analyze = StockAnalyzer(row + ".NS")
+        analyze = SMA3Strategy(row + ".NS")
         signal = analyze.SMA_3()
         results_50.append([row, signal])
 
@@ -25,7 +25,7 @@ def nifty200_sort_3SMA():
     df = pd.read_csv(csv_file_path)
 
     for row in df['Ticker']:
-        analyze = StockAnalyzer(row + ".NS")
+        analyze = SMA3Strategy(row + ".NS")
         signal = analyze.SMA_3()
         results_200.append([row, signal])
 
@@ -39,7 +39,7 @@ def nifty500_sort_3SMA():
     df = pd.read_csv(csv_file_path)
 
     for row in df['Ticker']:
-        analyze = StockAnalyzer(row + ".NS")
+        analyze = SMA3Strategy(row + ".NS")
         signal = analyze.SMA_3()
         results_500.append([row, signal])
 
