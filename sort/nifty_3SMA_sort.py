@@ -1,5 +1,5 @@
 import pandas as pd
-from indicator import StockAnalyzer
+from indicators.SMA3_strategy import StockAnalyzer
 import streamlit as st
 import datetime
 
