@@ -1,12 +1,13 @@
 from indicators.SMA3_strategy import SMA3Strategy
 import streamlit as st
 from nifty_data import nse_stocks_list
-from graphs import Graphs
+from graphs.sma3_graph import SMA3Graph
 from stock_data.dividend import DividendData
 from indicators.percent_startegy import PercentStrategy
 from stock_data.balance_sheet import BalanceSheet
 from stock_data.income_statement import IncomeStatement
 from stock_data.cash_flow import CashFlow
+from graphs.percent_graph import PercentGraph
 
 
 def sma3_strategy_display():
@@ -20,7 +21,7 @@ def sma3_strategy_display():
         tab1, tab2, tab3, tab4 = st.tabs(["Graph", "Income Statement(P&L)", "Balance Sheet", "Additional Info"])
 
         with tab1:
-            plot_graph = Graphs(usable_ticker)
+            plot_graph = SMA3Graph(usable_ticker)
             image_data = plot_graph.plot_data_3SMA()
             st.image(image_data, use_column_width=True)
 
@@ -92,7 +93,7 @@ def percent_strategy_display():
         tab1, tab2, tab3, tab4 = st.tabs(["Graph", "Income Statement(P&L)", "Balance Sheet", "Additional Info"])
 
         with tab1:
-            plot_graph = Graphs(usable_ticker)
+            plot_graph = PercentGraph(usable_ticker)
             st.write(f"The stock is {rounded_percent_diff}% down from all time high.")
             image_data = plot_graph.plot_data_percent()
             st.image(image_data, use_column_width=True)

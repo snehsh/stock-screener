@@ -1,8 +1,10 @@
 import yfinance as yf
 import matplotlib.pyplot as plt
 from io import BytesIO
-class Graphs:
-    def __init__(self,ticker):
+
+
+class SMA3Graph:
+    def __init__(self, ticker):
         self.signal = None
         self.ticker = ticker
         self.data = yf.download(ticker, period="2y", interval="1d")
@@ -16,10 +18,10 @@ class Graphs:
     def plot_data_3SMA(self):
         plt.figure(figsize=(10, 6))
         current_price = self.current_price
-        rounded_price = round(current_price,2)
-        rounded_sma20 = round(self.sma20[-1],2)
-        rounded_sma50 = round(self.sma50[-1],2)
-        rounded_sma200 = round(self.sma200[-1],2)
+        rounded_price = round(current_price, 2)
+        rounded_sma20 = round(self.sma20[-1], 2)
+        rounded_sma50 = round(self.sma50[-1], 2)
+        rounded_sma200 = round(self.sma200[-1], 2)
         year_data = self.data[-260:]
 
         plt.plot(year_data.index, year_data['Close'], label=f'Close Price: {rounded_price}')
@@ -49,28 +51,4 @@ class Graphs:
 
         return buffer
 
-    def plot_data_percent(self):
-        plt.figure(figsize=(10, 6))
-        current_price = self.current_price
-        rounded_price = round(current_price, 2)
-        year_data = self.data[-260:]
-        all_time_high = self.all_time_high
-        plt.plot(year_data.index, year_data['Close'], label=f'Close Price {rounded_price}')
 
-        plt.xlabel('Date')
-        plt.ylabel('Price')
-        plt.title(f"Stock Prices for {self.ticker} (Last 12 Months)")
-
-        plt.axhline(y=all_time_high, color='red', linestyle='--', label=f"All Time High: {all_time_high}")
-
-        plt.legend()
-        plt.xticks(rotation=45)
-        plt.grid(True)
-        plt.tight_layout()
-
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        plt.close()
-        buffer.seek(0)
-
-        return buffer
