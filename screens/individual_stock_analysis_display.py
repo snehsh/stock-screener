@@ -11,13 +11,13 @@ from graphs.percent_graph import PercentGraph
 
 
 def sma3_strategy_display():
-    ticker_symbol = st.selectbox("Enter Stock Ticker Symbol:", nse_stocks_list.display_list)
+    ticker_symbol = st.selectbox(":blue[Enter Stock Ticker Symbol:]", nse_stocks_list.display_list)
     usable_ticker = ticker_symbol.upper() + ".NS"
     if st.button("Analyze"):
         stock_analyzer = SMA3Strategy(usable_ticker)
         signal = stock_analyzer.SMA_3()
-        st.header(f"{ticker_symbol.upper()}")
-        st.write(f"Current Signal: {signal}")
+        st.header(f":green[{ticker_symbol.upper()}]")
+        st.subheader(f":orange[Current Signal:] {signal}")
         tab1, tab2, tab3, tab4 = st.tabs(["Graph", "Income Statement(P&L)", "Balance Sheet", "Additional Info"])
 
         with tab1:
@@ -31,14 +31,14 @@ def sma3_strategy_display():
                 enter_income_statement = IncomeStatement(usable_ticker)
                 get_income_statement = enter_income_statement.income_statement_yearly()
 
-                st.subheader("Income Statement(P&L")
+                st.subheader(":orange[Income Statement(P&L)]")
                 st.dataframe(get_income_statement)
 
             with tab2_2:
                 enter_income_statement = IncomeStatement(usable_ticker)
                 get_income_statement = enter_income_statement.income_statement_quarterly()
 
-                st.subheader("Income Statement(P&L")
+                st.subheader(":orangeIncome Statement(P&L)]")
                 st.dataframe(get_income_statement)
 
         with tab3:
@@ -46,33 +46,33 @@ def sma3_strategy_display():
             with tab3_1:
                 enter_balance_sheet = BalanceSheet(usable_ticker)
                 get_balance_sheet = enter_balance_sheet.balance_sheet_yearly()
-                st.subheader("Balance Sheet")
+                st.subheader(":orange[Balance Sheet]")
                 st.dataframe(get_balance_sheet)
             with tab3_2:
                 enter_balance_sheet = BalanceSheet(usable_ticker)
                 get_balance_sheet = enter_balance_sheet.balance_sheet_quarterly()
-                st.subheader("Balance Sheet")
+                st.subheader(":orange[Balance Sheet]")
                 st.dataframe(get_balance_sheet)
 
         with tab4:
             dividend_data = DividendData(usable_ticker)
             latest_dividend_date, latest_dividend_amount = dividend_data.dividends()
-            st.subheader("Dividend Details:")
+            st.subheader(":orange[Dividend Details:]")
             if latest_dividend_date == "NA":
                 st.write(f"Latest Dividend Date: {latest_dividend_date}")
             else:
                 st.write(f"Latest Dividend Date: {latest_dividend_date.strftime('%Y-%m-%d')}")
             st.write(f"Latest Dividend Amount: {latest_dividend_amount}")
 
-            st.subheader("Cashflow Details:")
-            st.write("Yearly Cashflow")
+            st.subheader(":orange[Cashflow Details:]")
+            st.write("Yearly Cashflow:")
             enter_cash_flow = CashFlow(usable_ticker)
             get_yearly_cash_flow = enter_cash_flow.cash_flow_yearly()
             if get_yearly_cash_flow.empty:
                 st.write("NA")
             else:
                 st.dataframe(get_yearly_cash_flow)
-            st.write("Quarterly Cashflow")
+            st.write("Quarterly Cashflow:")
             get_quarterly_cash_flow = enter_cash_flow.cash_flow_quarterly()
             if get_quarterly_cash_flow.empty:
                 st.write("NA")
@@ -81,9 +81,9 @@ def sma3_strategy_display():
 
 
 def percent_strategy_display():
-    ticker_symbol = st.selectbox("Enter Stock Ticker Symbol:", nse_stocks_list.display_list_nifty50)
+    ticker_symbol = st.selectbox(":orange[Enter Stock Ticker Symbol:]", nse_stocks_list.display_list_nifty50)
     usable_ticker = ticker_symbol.upper() + ".NS"
-    select_percent = st.slider("Enter your choice of %", 0, 100, 1)
+    select_percent = st.slider(":orange[Select percentage of your choice:]", 0, 100, 1,key="individual_percentage slider")
     st.write(f"Selected Percentage: {select_percent}")
     if st.button("Analyze"):
         stock_analyzer = PercentStrategy(usable_ticker, select_percent)
@@ -104,14 +104,14 @@ def percent_strategy_display():
                 enter_income_statement = IncomeStatement(usable_ticker)
                 get_income_statement = enter_income_statement.income_statement_yearly()
 
-                st.subheader("Income Statement(P&L")
+                st.subheader(":orange[Income Statement(P&L)]")
                 st.dataframe(get_income_statement)
 
             with tab2_2:
                 enter_income_statement = IncomeStatement(usable_ticker)
                 get_income_statement = enter_income_statement.income_statement_quarterly()
 
-                st.subheader("Income Statement(P&L")
+                st.subheader(":orange[Income Statement(P&L)]")
                 st.dataframe(get_income_statement)
 
         with tab3:
@@ -119,18 +119,18 @@ def percent_strategy_display():
             with tab3_1:
                 enter_balance_sheet = BalanceSheet(usable_ticker)
                 get_balance_sheet = enter_balance_sheet.balance_sheet_yearly()
-                st.subheader("Balance Sheet")
+                st.subheader(":orange[Balance Sheet]")
                 st.dataframe(get_balance_sheet)
             with tab3_2:
                 enter_balance_sheet = BalanceSheet(usable_ticker)
                 get_balance_sheet = enter_balance_sheet.balance_sheet_quarterly()
-                st.subheader("Balance Sheet")
+                st.subheader(":orange[Balance Sheet]")
                 st.dataframe(get_balance_sheet)
 
         with tab4:
             dividend_data = DividendData(usable_ticker)
             latest_dividend_date, latest_dividend_amount = dividend_data.dividends()
-            st.subheader("Dividend Details:")
+            st.subheader(":orange[Dividend Details:]")
 
             if latest_dividend_date == "NA":
                 st.write(f"Latest Dividend Date: {latest_dividend_date}")
@@ -139,15 +139,15 @@ def percent_strategy_display():
 
             st.write(f"Latest Dividend Amount: {latest_dividend_amount}")
 
-            st.subheader("Cashflow Details:")
-            st.write("Yearly Cashflow")
+            st.subheader(":orange[Cashflow Details:]")
+            st.write("Yearly Cashflow:")
             enter_cash_flow = CashFlow(usable_ticker)
             get_yearly_cash_flow = enter_cash_flow.cash_flow_yearly()
             if get_yearly_cash_flow.empty:
                 st.write("NA")
             else:
                 st.dataframe(get_yearly_cash_flow)
-            st.write("Quarterly Cashflow")
+            st.write("Quarterly Cashflow:")
             get_quarterly_cash_flow = enter_cash_flow.cash_flow_quarterly()
             if get_quarterly_cash_flow.empty:
                 st.write("NA")
