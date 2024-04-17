@@ -26,7 +26,7 @@ def main():
         elif selected_individual_indicator_option == "Percentage Strategy":
             st.write(
                 "This strategy is a personalized one. You have to choose a percentage of your choice as a reference, "
-                "If the current price is below the reference percentage from all time then indicator "
+                "If the current price is below the reference percentage from all time high then indicator "
                 "will show a 'Buy' signal.")
             st.write(" For Example: If you Choose 40%, the indicator will show a buy sign if the "
                      "current stock price is more than 40% down from all time high.")
@@ -56,7 +56,7 @@ def main():
                     "This startegy is a personalized one. You have to choose a percentage of your choice as a "
                     "reference,"
                     "all stocks whose current price is below the reference percentage from all time will have a 'Buy' signal.")
-                st.write("For Example: If you Choose 40%, then all stocks whose current price is more that 40% down "
+                st.write("For Example: If you Choose 40%, then all stocks whose current price is more that 40% down from all time high "
                          "will be displayed.")
                 nifty_percent_display.download_pdf_50_percent()
 
