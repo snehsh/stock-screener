@@ -3,7 +3,7 @@ import pandas as pd
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.platypus import Table, SimpleDocTemplate, TableStyle
-from indicators.percent_startegy import PercentStrategy
+from indicators.percent_strategy import PercentStrategy
 
 
 def download_pdf_50_percent():
