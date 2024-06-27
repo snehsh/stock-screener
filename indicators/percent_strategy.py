@@ -6,7 +6,7 @@ class PercentStrategy:
         self.signal = None
         self.ticker = ticker
         self.percent = percent
-        self.data = yf.download(ticker, period="3y", interval="1d")
+        self.data = yf.download(ticker, period="max", interval="1d")
         self.all_time_data = yf.download(ticker, period="max")
         self.sma20 = self.data['Close'].rolling(window=20).mean()[-260:]
         self.sma50 = self.data['Close'].rolling(window=50).mean()[-260:]

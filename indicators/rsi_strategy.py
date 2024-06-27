@@ -7,7 +7,7 @@ class RSIStrategy:
         self.ticker = ticker
         self.rsi_length = rsi_length
         self.window = window
-        self.data = yf.download(ticker, period="", interval="1d")
+        self.data = yf.download(ticker, period="max", interval="1d")
         self.all_time_data = yf.download(ticker, period="max")
         self.all_time_high = self.all_time_data['Close'].max()
         self.current_price = self.data['Close'].iloc[-1]
