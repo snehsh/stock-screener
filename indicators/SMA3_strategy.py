@@ -5,7 +5,7 @@ class SMA3Strategy:
     def __init__(self, ticker):
         self.signal = None
         self.ticker = ticker
-        self.data = yf.download(ticker, period="3y", interval="1d")
+        self.data = yf.download(ticker, period="2y", interval="1d")
         self.all_time_data = yf.download(ticker, period="max")
 
         # Calculate SMA series and limit to last 260 data points
